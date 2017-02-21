@@ -3,6 +3,7 @@ package com.shamsid.packageinformer.core;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.Drawable;
 import com.shamsid.packageinformer.model.PackagInfo;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,6 @@ import java.util.List;
 public class PackageInformer {
 
 
-  public static final  int APPLICATION = 1;
   public static final  int SERVICES = 2;
   public static final  int RECEIVERS = 3;
   public static final  int PERMISSIONS = 4;
@@ -199,13 +199,34 @@ public class PackageInformer {
     packagInfo.setVersionCode (String.valueOf (packageInfo.versionCode));
     packagInfo.setVersionName (packageInfo.versionName);
     packagInfo.setPackageName (packageInfo.packageName);
-
     return packagInfo;
   }
-  
+
   private PackageInfo getPackageInfo(String packageName,int flag) throws
       PackageManager.NameNotFoundException{
     return packageManager.getPackageInfo (packageName,flag);
+  }
+
+  public  Drawable getPackageDrawable(String packageName){
+    Drawable icon = null;
+    try{
+      icon = packageManager.getApplicationIcon (packageName);
+
+    }catch (PackageManager.NameNotFoundException nameException ){
+      nameException.printStackTrace ();
+    }
+    return icon;
+
+  }
+  public String getAppNameForPkg(String packageName) {
+    try {
+      PackageInfo packageInfo = packageManager.getPackageInfo (packageName, 0);
+      return packageInfo != null ? packageInfo.applicationInfo.loadLabel (packageManager).toString ()
+          : null;
+    } catch (PackageManager.NameNotFoundException ne) {
+      ne.printStackTrace ();
+    }
+    return null;
   }
 
 }

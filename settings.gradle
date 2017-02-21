@@ -1,1 +1,1 @@
-include ':app', ':packageinformer'
+include ':app', ':library'

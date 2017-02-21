@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/PackageInformerDemo.iml" filepath="$PROJECT_DIR$/PackageInformerDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PackageInformer.iml" filepath="$PROJECT_DIR$/PackageInformer.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/packageinformer/packageinformer.iml" filepath="$PROJECT_DIR$/packageinformer/packageinformer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
     </modules>
   </component>
 </project>

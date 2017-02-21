@@ -1,5 +1,7 @@
 package com.shamsid.packageinformer.model;
 
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -74,6 +76,8 @@ public  class PackagInfo implements Parcelable {
   private long lastUpdateTime;
   private int baseRevisionCode;
 
+
+
   protected PackagInfo (Parcel in) {
     installLocation = in.readString();
     packageName = in.readString();
@@ -81,6 +85,7 @@ public  class PackagInfo implements Parcelable {
     versionName = in.readString();
     lastUpdateTime = in.readLong();
     baseRevisionCode = in.readInt();
+
   }
 
   @Override
