@@ -33,7 +33,7 @@ public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.
   @Override public void onBindViewHolder (ViewHolder holder, int position) {
     holder.applicationName.setText (mPackageInformer.getAppNameForPkg (mPackageList.get (position).getPackageName ())!=null?
         mPackageInformer.getAppNameForPkg (mPackageList.get (position).getPackageName ()):mPackageList.get (position).getPackageName ());
-    holder.applicationVersionCode.setText (mPackageList.get (position).getVersionCode ());
+    holder.applicationVersionCode.setText (mPackageList.get (position).getPackageName ());
     holder.applicationIcon.setImageDrawable (mPackageInformer.getPackageDrawable (mPackageList.
         get (position).getPackageName ()));
   }

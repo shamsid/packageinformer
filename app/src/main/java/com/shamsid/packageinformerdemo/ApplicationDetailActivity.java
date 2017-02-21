@@ -1,19 +1,20 @@
 package com.shamsid.packageinformerdemo;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.shamsid.packageinformer.core.PackageInformer;
 import com.shamsid.packageinformer.model.PackagInfo;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class ApplicationDetailActivity extends Activity {
+public class ApplicationDetailActivity extends AppCompatActivity {
 
   private ImageView mApplicationIcon;
   private TextView  mApplicationName ,mVersionCode;
@@ -21,7 +22,17 @@ public class ApplicationDetailActivity extends Activity {
 
   @Override protected void onCreate (Bundle savedInstanceState) {
     super.onCreate (savedInstanceState);
-    setContentView (R.layout.single_app_detail);
+
+    setContentView (R.layout.activity_application_detail);
+
+    Toolbar toolbar = (Toolbar) findViewById (R.id.toolbar);
+    setSupportActionBar(toolbar);
+
+    if (getSupportActionBar() != null){
+      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+      getSupportActionBar().setDisplayShowHomeEnabled(true);
+      getSupportActionBar().setDisplayShowTitleEnabled(false);
+    }
 
     PackageInformer packageInformer = new PackageInformer (this);
 
@@ -87,5 +98,13 @@ public class ApplicationDetailActivity extends Activity {
   protected void attachBaseContext(Context newBase) {
     super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
   }
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    // handle arrow click here
+    if (item.getItemId() == android.R.id.home) {
+      finish(); // close this activity and return to preview activity (if there is any)
+    }
 
+    return super.onOptionsItemSelected(item);
+  }
 }
